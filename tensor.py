@@ -43,7 +43,7 @@ elif mode == "NIGHT_VISION":
     # 3. Reduces transparency and enhances visibility in low-light conditions
     filtered = cv2.addWeighted(filtered, 1.5, filtered, 0.5, 0)
     
-    # 4. Map intensity to the Green channel (BGR format)
+    # 4. Map intensity to the Green channel (BGR format szx)
     zeros = np.zeros_like(filtered)
     filtered = cv2.merge([zeros, filtered, zeros])
     
@@ -51,5 +51,6 @@ else:
     raise ValueError("Invalid filter mode")
 
 cv2.imshow("Filtered Image", filtered)
+cv2.imwrite("Filtered Image.jpeg", filtered)
 cv2.waitKey(0)
 cv2.destroyAllWindows()
